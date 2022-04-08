@@ -5,4 +5,5 @@ interface IStoneFactory {
     function createStone(address token) external returns (address stone);
     function createOrGetStone(address token) external returns (address stone);
     function feeTo() external returns (address);
+    function allStones(address) external view returns (address);
 }

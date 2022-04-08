@@ -7,6 +7,7 @@ interface IStone {
     function burn(uint256 tokenId) external;
     function withdraw(address to) external returns (uint256);
     function token() external returns (address);
+    function reserve() external returns (uint256);
     function flash(
         address borrower, 
         uint256 amount, 
