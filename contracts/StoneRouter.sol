@@ -5,7 +5,7 @@ import "./interfaces/IWETH.sol";
 import "./interfaces/IStone.sol";
 import "./interfaces/IStoneFactory.sol";
 import "./lib/TransferHelper.sol";
-import "./lib/ReentrancyGuard.sol";
+import "./common/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 
 contract StoneRouter is ReentrancyGuard {

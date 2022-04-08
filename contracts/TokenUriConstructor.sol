@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import 'base64-sol/base64.sol';
-import './lib/DateTime.sol';
+import './common/DateTime.sol';
 import './interfaces/ITokenUriConstructor.sol';
 
 contract TokenUriConstructor is DateTime, ITokenUriConstructor {

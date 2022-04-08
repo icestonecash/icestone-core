@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "./interfaces/IERC20.sol";
 import "./lib/TransferHelper.sol";
-import "./lib/ReentrancyGuard.sol";
+import "./common/ReentrancyGuard.sol";
 import "./interfaces/ITokenUriConstructor.sol";
 import "./interfaces/IStoneFlashBorrower.sol";
 import "./interfaces/IStoneFactory.sol";
