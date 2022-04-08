@@ -8,6 +8,7 @@ import "./interfaces/ITokenUriConstructor.sol";
 import "./interfaces/IStoneFlashBorrower.sol";
 import "./interfaces/IStoneFactory.sol";
 import "./lib/SafeMath.sol";
+import "./common/StoneData.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
 contract Stone is ERC721Enumerable, ReentrancyGuard {
@@ -22,11 +23,6 @@ contract Stone is ERC721Enumerable, ReentrancyGuard {
     string private _tokenSymbol;
     uint256 private _tokenDecimals;
     uint256 private _lastMinted = 0;
-
-    struct StoneData {
-        uint256 unlockTime;
-        uint256 value;
-    }
 
     mapping(uint256 => StoneData) public stonesInfo;
 
@@ -51,9 +47,12 @@ contract Stone is ERC721Enumerable, ReentrancyGuard {
         require(amountIn > 0, "amountin-zero");
 
         uint256 tokenId = ++_lastMinted;
-        StoneData storage stone = stonesInfo[tokenId];
-        stone.unlockTime = unlockTime;
-        stone.value = amountIn;
+        StoneData memory stone = StoneData({
+            unlockTime: unlockTime,
+            value: amountIn,
+            createdTime: block.timestamp
+        });
+        stonesInfo[tokenId] = stone;
 
         _update(balance);
         _safeMint(to, tokenId);
