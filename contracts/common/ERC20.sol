@@ -38,12 +38,12 @@ contract ERC20 is IERC20 {
         emit Transfer(from, address(0), value);
     }
 
-    function _approve(address owner, address spender, uint value) private {
+    function _approve(address owner, address spender, uint value) internal {
         allowance[owner][spender] = value;
         emit Approval(owner, spender, value);
     }
 
-    function _transfer(address from, address to, uint value) private {
+    function _transfer(address from, address to, uint value) internal {
         require(balanceOf[from] >= value, "insufficient-funds");
         balanceOf[from] = balanceOf[from].sub(value);
         balanceOf[to] = balanceOf[to].add(value);
