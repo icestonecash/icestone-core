@@ -17,7 +17,7 @@ describe('Stone', () => {
         token = prepared.token;
         contract = prepared.stone;
 
-        expect(await token.balanceOf(wallet.address)).to.equal("1000000");
+        expect(await token.balanceOf(wallet.address)).to.equal("0xffffffffffffffffff");
 
         await expect(token.approve(contract.address, 10000))
             .to.emit(token, "Approval")
