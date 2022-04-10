@@ -106,10 +106,15 @@ contract Stone is ERC721Enumerable, ReentrancyGuard {
 
     function tokenURI(uint256 tokenId) public override view returns (string memory) {
         StoneData storage stone = stonesInfo[tokenId];
+
         return ITokenUriConstructor(tokenUriConstructor).construct(
-            stone.value > 0 ? stone.value / 10 ** _tokenDecimals : 0, 
+            stone.value,
+            _tokenDecimals,
             _tokenSymbol,
-            stone.unlockTime
+            stone.unlockTime,
+            token,
+            0,
+            0
         );
     }
 
